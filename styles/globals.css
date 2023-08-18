@@ -217,6 +217,40 @@ a {
     border-color: transparent;
 }
 
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000006e;
+    z-index: 2000;
+    overflow-Y: auto;
+    overflow-x: hidden;
+    transition: 0.5s;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.popup.hide {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    transition: width 0s 1s, height 0s 0.5s, opacity 0.5s;
+}
+
+.description-input {
+    padding: 10px;
+}
+
+.white-bg {
+    background-color: #fff;
+}
+
+.close {
+    right: 20px;
+    top: 10px;
+}
 
 @media (max-width: 1399.98px) {}
 

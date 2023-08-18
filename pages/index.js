@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
+import { useState } from "react";
+import axios from "axios";
 
-export default function Home() {
+export default function Home(props) {
+
+  const [descriptionPopup, setDescriptionPopup] = useState(null);
+
+  const data = props.data;
+
   return (
     <>
       <Layout />
-
+{console.log(data)}
       <div className="bg py-2" style={{ backgroundImage: 'url(/images/bg.png)' }}>
         <div className="container">
           <div className="card-item shadow my-5">
@@ -27,7 +34,7 @@ export default function Home() {
                 </div>
                 <p>17 songs</p>
                 <p className="mb-2 fst-italic">This Test Playt playlist from premium creator features the best copyright-free songs for ️ YouTube videos, social media, and podcasts.`</p>
-                <p className="blue-text">Add Description</p>
+                <p className="blue-text cursor" onClick={() => setDescriptionPopup(true)}>Add Description</p>
               </div>
             </div>
           </div>
@@ -72,6 +79,34 @@ export default function Home() {
           </tbody>
         </table>
       </div>
+
+      <div className={"popup " + (descriptionPopup ? " " : " hide")}>
+        <div className='row h-100 flex-column d-flex justify-content-center align-items-center'>
+          <div className='col-lg-7 col-md-8 col-sm-10 col-10'>
+            <div className='white-bg p-3 position-relative'>
+              <div className=' position-absolute close text-end' onClick={() => setDescriptionPopup(null)}>
+                <p className="cursor">x</p>
+              </div>
+              <div className='py-3'>
+                <label className="mb-2 fw-bold">Description</label>
+                <textarea
+                  className="w-100 description-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
+
+
+// export async function getServerSideProps(context) {
+//   const data = await axios.get('/v2/artist_dashboard/stats');
+//   console.log(data)
+//   return {
+//     props: {
+//       data: data.data
+//     }, // will be passed to the page component as props
+//   };
+// }

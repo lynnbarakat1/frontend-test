@@ -11,16 +11,6 @@ function App({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(false);
-  }, [router.query]);
-
-  useEffect(() => {
-    document.querySelector('body').style.overflow = loading ? 'hidden' : null;
-    document.querySelector('html').style.overflow = loading ? 'hidden' : null;
-  }, [loading]);
-
-
   axiosConfig();
 
   useEffect(() => {
