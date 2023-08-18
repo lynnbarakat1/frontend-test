@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 import { useState } from "react";
-import axios from "axios";
 
 export default function Home(props) {
 
@@ -12,7 +11,6 @@ export default function Home(props) {
   return (
     <>
       <Layout />
-{console.log(data)}
       <div className="bg py-2" style={{ backgroundImage: 'url(/images/bg.png)' }}>
         <div className="container">
           <div className="card-item shadow my-5">
@@ -99,14 +97,3 @@ export default function Home(props) {
     </>
   )
 }
-
-
-// export async function getServerSideProps(context) {
-//   const data = await axios.get('/v2/artist_dashboard/stats');
-//   console.log(data)
-//   return {
-//     props: {
-//       data: data.data
-//     }, // will be passed to the page component as props
-//   };
-// }
